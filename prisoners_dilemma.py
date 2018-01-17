@@ -34,16 +34,10 @@ import random
 import os.path              
     
 import example0, example1, example2, example3
-import example4, example5, example6, example7
-import team0, team1, team2, team3, team4
-import team5, team6, team7, team8, team9
-import team10, team11, team12, team13, team14
 betray = example1
 collude = example0
 
-modules = [example0, example1, example2, example3, example4, example5, example6, example7,
-team0, team1, team2, team3, team4, team5, team6, team7, team8, team9, team10, 
-team11, team12, team13, team14]
+modules = [example0, example1, example2, example3]
 for module in modules:
     reload(module)
     print ('reloaded',module)
@@ -61,6 +55,7 @@ def main_play(modules):
         moves:
         sections: a list of [str, str, str, list of str]    
             '''
+    print('Number of teams:', len(modules))
     scores, moves = play_tournament(modules)
     section0, section1, section2, section3 = make_reports(modules, scores, moves)
     code = make_code_string(modules)
@@ -182,7 +177,6 @@ def make_reports(modules, scores, moves):
     section0 = make_section0(modules, scores)
     section1 = make_section1(modules, scores)
     section2 = make_section2(modules, scores)
-    
     section3 = []
     for index in range(len(modules)):
         section3.append(make_section3(modules, moves, scores, index))
